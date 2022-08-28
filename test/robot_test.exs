@@ -41,9 +41,9 @@ defmodule ToyRobot.RobotTest do
     end
   end
 
-  describe "When the robot is facing west" do
+  describe "when the robot is facing west" do
     setup do
-      {:ok, %{robot: %Robot{north: 0, facing: :west}}}
+      {:ok, %{robot: %Robot{east: 0, facing: :west}}}
     end
 
     test "it moves one space west", %{robot: robot} do

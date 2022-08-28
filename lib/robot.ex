@@ -15,11 +15,18 @@ defmodule ToyRobot.Robot do
       %Robot{north: 1}
   """
 #  def move(%__MODULE__{} = robot), do: robot |> move_north # %__MODULE__{} == %ToyRobot.Robot{}
-  def move(%Robot{facing: :north} = robot), do: robot |> move_north
-  def move(%Robot{facing: :east} = robot), do: robot |> move_east
-  def move(%Robot{facing: :south} = robot), do: robot |> move_south
-  def move(%Robot{facing: :west} = robot), do: robot |> move_west
-
+#  def move(%Robot{facing: :north} = robot), do: robot |> move_north
+#  def move(%Robot{facing: :east} = robot), do: robot |> move_east
+#  def move(%Robot{facing: :south} = robot), do: robot |> move_south
+#  def move(%Robot{facing: :west} = robot), do: robot |> move_west
+  def move(%Robot{facing: facing} = robot) do
+    case facing do
+      :north -> robot |> move_north
+      :east -> robot |> move_east
+      :south -> robot |> move_south
+      :west -> robot |> move_west
+    end
+  end
 
   @doc """
   Moves the robot east one space.
@@ -29,11 +36,11 @@ defmodule ToyRobot.Robot do
       iex> alias ToyRobot.Robot
       ToyRobot.Robot
       iex> robot = %Robot{east: 0}
-      %{east: 0}
+      %Robot{east: 0}
       iex> robot |> Robot.move_east
-      %{east: 1}
+      %Robot{east: 1}
       iex> robot |> Robot.move_east |> Robot.move_east |> Robot.move_east
-      %{east: 3}
+      %Robot{east: 3}
   """
   def move_east(robot) do
     %Robot{east: robot.east + 1}
@@ -54,7 +61,7 @@ defmodule ToyRobot.Robot do
       %Robot{east: -3}
   """
   def move_west(robot) do
-    %Robot{east: robot.east -1}
+    %Robot{east: robot.east - 1}
   end
 
   @doc """
