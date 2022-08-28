@@ -11,9 +11,9 @@ defmodule ToyRobot.Robot do
       iex> robot |> Robot.move
       %{position: 1}
       iex> robot |> Robot.move |> Robot.move |> Robot.move
-      ${position: 3}
+      %{position: 3}
   """
   def move(robot) do
-
+    %{position: robot.position + 1}
   end
 end
